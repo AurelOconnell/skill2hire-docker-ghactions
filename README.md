@@ -23,7 +23,7 @@ We also have to pulling step implemented with Docker Compose:
 
 * Pull Docker image for Docker Compose
 
-If you call `docker-compose up`, the images `ice0nine/docker-demo:staging` and `ice0nine/docker-demo:prod` will be pulled at DockerHub and be started in a local Docker Compose environment (cmp. last quest).
+If you call `docker-compose up`, the images `aureloconnell/docker-demo:staging` and `aureloconnell/docker-demo:prod` will be pulled at DockerHub and be started in a local Docker Compose environment (cmp. last quest).
 
 So what is missing? We need a trigger which, once we push new code to build the application on a build server, runs all tests and creates a runnable artifact (the Spring Boot web application in our case).
 
@@ -60,7 +60,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push
         run: |
-          docker push ice0nine/docker-demo:${GITHUB_REF##*/}
+          docker push aureloconnell/docker-demo:${GITHUB_REF##*/}
 ```
 
 ```resource
